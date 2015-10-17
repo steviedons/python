@@ -20,4 +20,6 @@ def remove_vowels(s):
     return without
 
 if __name__ == '__main__':
-    unittest.main()
+#   unittest.main()
+    s1 = "His name is {0}!".format("Arthur")
+    print(s1)
