@@ -1,7 +1,7 @@
 import turtle
 
 wn = turtle.Screen()
-wn.setup(500,500)
+wn.setup(500, 500)
 wn.bgcolor("lightblue")
 wn.title("Drunk Turtle")
 
