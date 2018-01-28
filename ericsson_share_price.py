@@ -2,17 +2,25 @@ import urllib.request
 import re
 import json
 import smtplib
+import sys
 from datetime import datetime
 
-no_shares = 1585
+NO_SHARES = 1585
 
 def scrape(url_to_open, regex):
     """ From the url and the regex return a list of the values found """
-    html_open = urllib.request.urlopen(url_to_open)
-    html = html_open.read()
-    pattern = re.compile(regex)
-    value = re.findall(pattern, str(html))
-    return value
+
+    try:
+        html_open = urllib.request.urlopen(url_to_open)
+        html = html_open.read()
+
+        pattern = re.compile(regex)
+        value = re.findall(pattern, str(html))
+    except urllib.error.HTTPError:
+        print('Could not connect to web site to do the scrape')
+        sys.exit(1)
+    else:
+        return value
 
 def noticeEMail(usr, psw, fromaddr, toaddr, subject, msg):
     """
@@ -40,22 +48,44 @@ def noticeEMail(usr, psw, fromaddr, toaddr, subject, msg):
 
 
 def get_share_price():
-    """ Grab the share price and the current exchange rate of Ericsson shares and create email """
+    """ Grab the share price  and return a list of matches"""
 
     price = scrape("http://uk.finance.yahoo.com/q?s=ERIC-B.ST", '"regularMarketPrice":{"raw":(.+?),"')
-    exrate = scrape("http://themoneyconverter.com/GBP/SEK.aspx", 'SEK/GBP = (.+?)</div>')
     print("price" + str(price))
-    print("exrate" + str(exrate))
+    return price
 
+def get_exchange_rate():
+    """ scrape the current exchange rate and return a list of rates """
+
+    exrate = scrape("http://themoneyconverter.com/GBP/SEK.aspx", 'SEK/GBP = (.+?)</div>')
+    print("exrate" + str(exrate))
+    return exrate
+
+def log_output_json(output):
+    with open('/home/steve/share_ouput.log', 'a') as f:
+        json.dump(output, f, indent=2)
+
+def work_out_value(price, exchange):
     try:
-        value = (float(price[0]) / float(exrate[0])) * no_shares
+        value = (float(price[0]) / float(exchange[0])) * NO_SHARES
     except IndexError:
         print("There was an issue with the web scrape")
         return None
-    
+    return value
+
+def build_email_message():
+
+    ericsson_price = get_share_price()
+    krona_exchange = get_exchange_rate()
+
+    value = work_out_value(ericsson_price, krona_exchange)
+
+    if value == None:
+        sys.exit(1)
+
     output = {'today': str(datetime.today()), 
-              'todays_price': float(price[0]), 
-              'todays_exchange': float(exrate[0]),
+              'todays_price': float(ericsson_price[0]), 
+              'todays_exchange': float(krona_exchange[0]),
               'total_value': value}
 
     output_subject = "Total share value: %.2f" % output['total_value']
@@ -67,9 +97,6 @@ def get_share_price():
     print(output_subject)
     print(output_msg)
 
-    with open('/home/steve/share_ouput.log', 'a') as f:
-        json.dump(output, f, indent=2)
-
     noticeEMail('steviedonsnotif@gmail.com', 
                 '0TlKCN27ytHa', 
                 'steviedonsnotif@gmail.com', 
@@ -77,6 +104,7 @@ def get_share_price():
                 output_subject, 
                 output_msg)
 
+    log_output_json(output)
 
 if __name__ == '__main__':
-    get_share_price()
+    build_email_message()

@@ -31,3 +31,11 @@ When you use default values, any parameter with a default value needs to be list
 after all the parameters that don’t have default values. This allows Python to con-
 tinue interpreting positional arguments correctly.
 '''
+
+# Return values - can be any data structure you want dicts / lists etc
+'''
+Modifying a List in a Function
+When you pass a list to a function, the function can modify the list. Any
+changes made to the list inside the function’s body are permanent, allowing
+you to work efficiently even when you’re dealing with large amounts of data.
+'''
