@@ -51,21 +51,23 @@ def get_share_price():
     """ Grab the share price  and return a list of matches"""
 
     price = scrape("http://uk.finance.yahoo.com/q?s=ERIC-B.ST", '"regularMarketPrice":{"raw":(.+?),"')
-    print("price" + str(price))
     return price
 
 def get_exchange_rate():
     """ scrape the current exchange rate and return a list of rates """
 
     exrate = scrape("http://themoneyconverter.com/GBP/SEK.aspx", 'SEK/GBP = (.+?)</div>')
-    print("exrate" + str(exrate))
     return exrate
 
 def log_output_json(output):
+    """ takes a dictionary and adds it to a log file as json """
+
     with open('/home/steve/share_ouput.log', 'a') as f:
         json.dump(output, f, indent=2)
 
 def work_out_value(price, exchange):
+    """ give the current share price and exchange rate return the total value in pounds """
+
     try:
         value = (float(price[0]) / float(exchange[0])) * NO_SHARES
     except IndexError:
@@ -74,6 +76,7 @@ def work_out_value(price, exchange):
     return value
 
 def build_email_message():
+    """ check the values of NO_SHARES, build and email and send it """
 
     ericsson_price = get_share_price()
     krona_exchange = get_exchange_rate()
