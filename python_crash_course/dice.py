@@ -16,11 +16,14 @@ Make a 10-sided die and a 20-sided die. Roll each die 10 times.
 from random import randint
 
 class Die():
+    """Represents a die, which can be rolled"""
 
     def __init__(self, sides=6):
+        """Initialize the die, default sides is 6"""
         self.sides = sides
 
     def roll_die(self):
+        """Roll the die and returns the value"""
         roll_value = randint(1, self.sides)
         return roll_value
 
@@ -29,7 +32,15 @@ class Die():
 # To run this code for a 10 sided die just change the instance
 
 my_die = Die(10)
-for i in range(1, 11):
+for i in range(10):
     print("The " + str(i) + " roll was: " + str(my_die.roll_die()))
 
+# In the book answer he creates a list
+
+results = []
+for roll_num in range(10):
+    result = my_die.roll_die()
+    results.append(result)
+print("\n10 rolls of a 10-sided die:")
+print(results)
 
