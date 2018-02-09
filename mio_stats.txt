@@ -1,0 +1,19 @@
+<mt>DC-PERFSTAT-1-statsMsgReceipt-0</mt>                   
+ <mt>DC-PERFSTAT-1-statsMsgReceiverAbatement-0</mt>                 
+ <mt>DC-PERFSTAT-1-statsMsgReceiverBlocked-0</mt> 
+ <mt>DC-PERFSTAT-1-statsMsgReceiverOverflow-0</mt>
+ <mt>DC-PERFSTAT-1-statsMsgReceiverOverload-0</mt> 
+ <mt>DC-PERFSTAT-1-statsMsgSubmitted-0</mt>                 
+<mt>DC-PERFSTAT-1-statsMsgUndelivered-0</mt>              
+<mt>DC-PERFSTAT-1-statsSmeIncoming-0</mt>                 
+<mt>DC-PERFSTAT-1-statsSmeOutgoing-0</mt>                  
+<mt>DC-PERFSTAT-1-statsEventMsgReplace-0</mt> 
+
+<r>500</r>
+<r>0</r>
+<r>0</r>
+<r>400</r>
+<r>23000</r>
+ <r>18</r>
+  <r>740</r>
+  <r>731</r>
