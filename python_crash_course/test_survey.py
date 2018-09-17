@@ -24,7 +24,7 @@ class TestAnnymousSurvey(unittest.TestCase):
         self.assertIn('English', self.my_survey.responses)
 
     def test_store_three_responses(self):
-        """Test that a single response is stored properly"""
+        """Test 3 responses is stored properly"""
         for response in self.responses:
             self.my_survey.store_response(response)
         
