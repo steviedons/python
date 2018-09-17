@@ -13,12 +13,18 @@ def run_game():
     screen = pygame.display.set_mode((screen_width, screen_height))
     pygame.display.set_caption("Print Event Keys")
 
+    pygame.font.init()
+    myfont = pygame.font.SysFont('Comic Sans MS', 300)
+
     # Start the main loop for the game
     while True:
         screen.fill(bg_color)
 
         key_input = check_events()
-        update_screen(screen, bg_color, key_input)
+
+        textsurface = myfont.render(key_input, False, (250,250,90))
+        screen.blit(textsurface,(0,0))
+
         # Make the most recently drawn screen visible
         pygame.display.update()
 
@@ -34,16 +40,5 @@ def check_events():
         key_name = pygame.key.name(event.key)
         print(key_name)
         return str(key_name)
-
-def update_screen(screen, bg_color, text):
-    """Update images on the screen and flip to the new screen"""
-
-    pygame.font.init()
-    myfont = pygame.font.SysFont('Comic Sans MS', 300)
-    screen.fill(bg_color)
-#    screen.blit(check_events())
-    textsurface = myfont.render(text, False, (250,250,90))
-    screen.blit(textsurface,(0,0))
-    # Make the most recently drawn screen visible
 
 run_game()
