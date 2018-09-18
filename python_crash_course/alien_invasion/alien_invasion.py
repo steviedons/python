@@ -1,5 +1,5 @@
 import pygame
-from pygame.sprite import Sprite
+from pygame.sprite import Group
 from alien_settings import Settings
 from ship import Ship
 import game_functions as gf
