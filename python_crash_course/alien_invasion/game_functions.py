@@ -35,3 +35,4 @@ def update_screen(ai_settings, screen, ship):
 
     # Make the most recently drawn screen visible
     pygame.display.flip()
+    
