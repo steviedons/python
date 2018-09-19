@@ -16,9 +16,10 @@ class Star(Sprite):
         self.image = pygame.image.load('/home/steve/python/python_crash_course/alien_invasion/images/shining2_small.png')
         self.rect = self.image.get_rect()
 
-        # Start each star at a random position on the screen
-        self.rect.x = randint(0, 1200)
-        self.rect.y = randint(0, 800)
+        # Start each star at a random position on the screen 
+        # the -25 is to pull the stars away from the screen edge
+        self.rect.x = randint(0, ai_settings.screen_width-25)
+        self.rect.y = randint(0, ai_settings.screen_height-25)
 
         # Store the stars exact postion
         self.x = float(self.rect.x)
