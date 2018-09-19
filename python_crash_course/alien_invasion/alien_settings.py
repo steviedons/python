@@ -15,3 +15,4 @@ class Settings():
         self.bullet_height = 15
         self.bullet_color = 0, 255, 255
         self.bullets_allowed = 10
+        self.num_stars = 50
