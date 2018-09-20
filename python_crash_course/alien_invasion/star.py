@@ -11,9 +11,9 @@ class Star(Sprite):
         super(Star, self).__init__()
         self.screen = screen
         self.ai_settings = ai_settings
-
+        image_path = '/home/steve/python/python_crash_course/alien_invasion/images/shining2_small.png'
         # Load the alien image and set its rect attribute.
-        self.image = pygame.image.load('/home/steve/python/python_crash_course/alien_invasion/images/shining2_small.png')
+        self.image = pygame.image.load(image_path)
         self.rect = self.image.get_rect()
 
         # Start each star at a random position on the screen 
