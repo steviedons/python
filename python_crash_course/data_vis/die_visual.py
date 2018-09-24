@@ -12,7 +12,7 @@ die_2 = Die(10)
 #    result = die.roll()
 #    results.append(result)
 
-results = [die_1.roll() + die_2.roll() for n in range(1000000)]
+results = [die_1.roll() + die_2.roll() for n in range(100000)]
 max_results = die_1.num_sides + die_2.num_sides
 frequencies = [results.count(n) for n in range(2, max_results+1)]
 

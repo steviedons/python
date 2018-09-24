@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite name="nosetests" tests="1" errors="0" failures="1" skip="0"><testcase classname="unit.calculate_test.TestCalculate" name="test_add_method_returns_correct_result_fail" time="0.001"><failure type="builtins.AssertionError" message="4 != 6"><![CDATA[Traceback (most recent call last):
+  File "/usr/lib/python3.6/unittest/case.py", line 59, in testPartExecutor
+    yield
+  File "/usr/lib/python3.6/unittest/case.py", line 605, in run
+    testMethod()
+  File "/home/steve/python/calculator/test/unit/calculate_test.py", line 13, in test_add_method_returns_correct_result_fail
+    self.assertEqual(4, self.calc.add(2, 4))
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 822, in _baseAssertEqual
+    raise self.failureException(msg)
+AssertionError: 4 != 6
+]]></failure></testcase></testsuite>
