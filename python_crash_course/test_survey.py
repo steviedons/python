@@ -9,7 +9,7 @@ test method.
 import unittest
 from survey import AnonymousSurvey
 
-class TestAnnymousSurvey(unittest.TestCase):
+class Test_AnnymousSurvey(unittest.TestCase):
     """Tests for the class AnonymousSurvey"""
 
     def setUp(self):
@@ -30,5 +30,6 @@ class TestAnnymousSurvey(unittest.TestCase):
         
         for response in self.responses:
             self.assertIn(response, self.my_survey.responses)
+
 
 unittest.main()
