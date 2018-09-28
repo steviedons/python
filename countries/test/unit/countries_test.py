@@ -1,7 +1,7 @@
 import unittest
-from countries import get_country_code
+from countries.countries import get_country_code
 
-class CountryCodeTestCase(unittest.TestCase):
+class TestCountryCode(unittest.TestCase):
     """Tests for name_function.py"""
 
     def test_andorra(self):

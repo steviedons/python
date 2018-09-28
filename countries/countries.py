@@ -1,4 +1,3 @@
-import unittest
 from pygal.maps.world import COUNTRIES
 
 def get_country_code(country_name):
