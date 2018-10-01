@@ -5,3 +5,6 @@ __pycache__/
 .vscode/settings.json
 ehmatthes-pcc-f555082/
 Python-Data-Science-and-Machine-Learning-Bootcamp/
+ll_env/bin
+ll_env/lib
+ll_env/lib64
