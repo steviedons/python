@@ -8,3 +8,6 @@ Python-Data-Science-and-Machine-Learning-Bootcamp/
 ll_env/bin
 ll_env/lib
 ll_env/lib64
+flask_env/bin
+flask_env/lib
+flask_env/lib64
